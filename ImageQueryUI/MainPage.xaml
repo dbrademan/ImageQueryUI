@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ImageQueryUI.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                x:Name="LoadingPageImage"
+                Source="laboratory_microscope.png"
+                SemanticProperties.Description="Awesome microscope image!"
+                HeightRequest="100"
+                HorizontalOptions="Center" />
+            
+            <Label
+                x:Name="StatusText"
+                Text=""
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="28"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="LoginButton"
+                Text="Click me to begin"
+                SemanticProperties.Hint="Click to begin organizing your imaging files"
+                Clicked="ConnectToOak"
+                HorizontalOptions="Center" />
+            
+            <Picker
+                x:Name="UserPicker"
+                IsVisible="false"
+                Title=""
+                FontSize="16"
+                ItemDisplayBinding="{Binding name}"
+                MinimumWidthRequest="400"
+                HorizontalOptions="Center"
+                />
+
+            <Button
+                x:Name="SelectUserButton"
+                IsVisible="false"
+                Text="Select this user"
+                SemanticProperties.Hint="Click to begin organizing your imaging files"
+                Clicked="SelectUser"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="CreateUserButton"
+                IsVisible="false"
+                Text="Create new user"
+                SemanticProperties.Hint="Click to create a new user"
+                Clicked="CreateUser"
+                HorizontalOptions="Center" />       
+
+            <ProgressBar 
+                x:Name="ApplicationProgressBar"
+                IsVisible="false"
+                MinimumHeightRequest="10"
+                Progress="0"
+                ProgressColor="CornflowerBlue" />
+
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

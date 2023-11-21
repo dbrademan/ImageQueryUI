@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ImageQueryUI.CreateUserPage"
+             Title="CreateUserPage">
+    <ScrollView>
+        <VerticalStackLayout
+        Spacing="25"
+        Padding="30,0"
+        VerticalOptions="Center">
+
+            <Image
+                x:Name="CreateUserImage"
+                Source="new_user.png"
+                SemanticProperties.Description="Awesome microscope image!"
+                HeightRequest="100"
+                HorizontalOptions="Center" />
+
+            <Label
+                x:Name="StatusText"
+                Text="Enter a username please."
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="16"
+                HorizontalOptions="Center" />
+            
+            <Entry x:Name="NewUserName"
+               Placeholder="Enter a new username here!"
+               TextChanged="ValidateUniqueUsername" />
+            
+            <Button
+                x:Name="CreateUserButton"
+                Text="Create user!"
+                IsEnabled="False"
+                SemanticProperties.Hint="Click to begin organizing your imaging files"
+                Clicked="AddNewUser"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -60,9 +60,8 @@ public partial class CreateUserPage : ContentPage
         throw new IOException("SQLite Error: Something broke about the connection.");
     }
 
-    private void AddNewUser(Object sender, EventArgs e) 
+    private async void AddNewUser(Object sender, EventArgs e) 
     {
-        #region Load user accounts
         var query = IDO_DataWrangler.DatabaseConnection.CreateCommand();
         query.CommandText =
             @"
@@ -72,16 +71,11 @@ public partial class CreateUserPage : ContentPage
                         ($inputText)
             ";
 
-        using (var reader = query.ExecuteReader())
-        {
-            while (reader.Read())
-            {
-                var id = reader.GetInt32(0);
-                var name = reader.GetString(1);
+        query.Parameters.AddWithValue("$inputText", NewUserName.Text);
 
-                IDO_DataWrangler.users.Add(id, new User(id, name));
-            }
-        }
+        var result = await query.ExecuteNonQueryAsync();
+
+        #region Load user accounts
         #endregion
     }
 }
